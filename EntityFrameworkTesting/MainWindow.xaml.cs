@@ -10,14 +10,13 @@ namespace EntityFrameworkTesting
         public MainWindow()
         {
             InitializeComponent();
-            
-            Task task = new Task();
-            task.Name = "Tarea1";
 
-            DatabaseContext databaseContext = new DatabaseContext();
+            Category homeCat = new Category("Hogar");
+            Task task = new Task("Barrer","Barrer la cocina y el pasillo", homeCat);
             
-            TaskRepository taskRepo = new TaskRepository(databaseContext);
-            taskRepo.CreateTask(task);
+            UnitOfWork unitOfWork = new UnitOfWork();
+            unitOfWork.Categories.Create(homeCat);
+            unitOfWork.Tasks.Create(task);
         }
     }
 }
