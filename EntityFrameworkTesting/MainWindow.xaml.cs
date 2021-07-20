@@ -11,12 +11,17 @@ namespace EntityFrameworkTesting
         public MainWindow()
         {
             InitializeComponent();
+<<<<<<< HEAD
             /*
             Task task = new Task();
             task.Name = "Tarea1";
+=======
+>>>>>>> af7fd5b5412d9850f6ed90fe06f8893076f00764
 
-            DatabaseContext databaseContext = new DatabaseContext();
+            Category homeCat = new Category("Hogar");
+            Task task = new Task("Barrer","Barrer la cocina y el pasillo", homeCat);
             
+<<<<<<< HEAD
             TaskRepository taskRepo = new TaskRepository(databaseContext);
             taskRepo.CreateTask(task);
             */
@@ -46,6 +51,11 @@ namespace EntityFrameworkTesting
 
             TaskRepository taskRepo = new TaskRepository(databaseContext);
             taskRepo.DeleteTask(task);
+=======
+            UnitOfWork unitOfWork = new UnitOfWork();
+            unitOfWork.Categories.Create(homeCat);
+            unitOfWork.Tasks.Create(task);
+>>>>>>> af7fd5b5412d9850f6ed90fe06f8893076f00764
         }
     }
 }

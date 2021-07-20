@@ -12,8 +12,13 @@ TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 D:\Programación\Proyectos\GitHub\EntityFrameworkTesting\App.xaml
 11407045341
 
+<<<<<<< HEAD
 91454928680
 213-2103269107
+=======
+1144089873
+213-1759639871
+>>>>>>> af7fd5b5412d9850f6ed90fe06f8893076f00764
 MainWindow.xaml;
 
 True

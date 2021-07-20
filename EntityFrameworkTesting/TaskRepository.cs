@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EntityFrameworkTesting
+﻿namespace EntityFrameworkTesting
 {
     public interface ITaskRepository{
-        void CreateTask(Task task);
+        void Create(Task task);
 
         void DeleteTask(Task task);
 
@@ -25,7 +19,7 @@ namespace EntityFrameworkTesting
             _databaseContext = databaseContext;
         }
 
-        public void CreateTask(Task task)
+        public void Create(Task task)
         {
             if (task != null)
             {

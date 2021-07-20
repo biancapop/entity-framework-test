@@ -2,14 +2,14 @@
 
 namespace EntityFrameworkTesting
 {
-    class DatabaseContext : DbContext
+    public class DatabaseContext : DbContext
     {
         public DbSet<Task> Tasks { get; set; }
         public DbSet<Category> Categories { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=todoapp.db");
+            optionsBuilder.UseSqlite("Data Source=todoapp.sqlite");
             base.OnConfiguring(optionsBuilder);
         }
 
