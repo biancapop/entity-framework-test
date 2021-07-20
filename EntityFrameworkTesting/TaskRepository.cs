@@ -9,6 +9,10 @@ namespace EntityFrameworkTesting
     public interface ITaskRepository{
         void CreateTask(Task task);
 
+        void DeleteTask(Task task);
+
+        void SearchTask(Task task);
+
     }
 
 
@@ -23,10 +27,23 @@ namespace EntityFrameworkTesting
 
         public void CreateTask(Task task)
         {
-            if (task != null) {
+            if (task != null)
+            {
                 _databaseContext.Tasks.Add(task);
                 _databaseContext.SaveChanges();
             }
+        }
+        public void DeleteTask(Task task)
+        {
+            _databaseContext.Tasks.Remove(task);
+            _databaseContext.SaveChanges();
+        }
+        public void SearchTask(Task task)
+        {
+
+            _databaseContext.Tasks.Find();
+           
+       
         }
     }
 }

@@ -1,37 +1,36 @@
 {
   "format": 1,
   "restore": {
-    "E:\\1.VisualStudio\\Trabajo\\entityframework-testing\\EntityFrameworkTesting\\EntityFrameworkTesting.csproj": {}
+    "D:\\Programación\\Proyectos\\GitHub\\EntityFrameworkTesting\\EntityFrameworkTesting.csproj": {}
   },
   "projects": {
-    "E:\\1.VisualStudio\\Trabajo\\entityframework-testing\\EntityFrameworkTesting\\EntityFrameworkTesting.csproj": {
+    "D:\\Programación\\Proyectos\\GitHub\\EntityFrameworkTesting\\EntityFrameworkTesting.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\1.VisualStudio\\Trabajo\\entityframework-testing\\EntityFrameworkTesting\\EntityFrameworkTesting.csproj",
+        "projectUniqueName": "D:\\Programación\\Proyectos\\GitHub\\EntityFrameworkTesting\\EntityFrameworkTesting.csproj",
         "projectName": "EntityFrameworkTesting",
-        "projectPath": "E:\\1.VisualStudio\\Trabajo\\entityframework-testing\\EntityFrameworkTesting\\EntityFrameworkTesting.csproj",
-        "packagesPath": "C:\\Users\\popes\\.nuget\\packages\\",
-        "outputPath": "E:\\1.VisualStudio\\Trabajo\\entityframework-testing\\EntityFrameworkTesting\\obj\\",
+        "projectPath": "D:\\Programación\\Proyectos\\GitHub\\EntityFrameworkTesting\\EntityFrameworkTesting.csproj",
+        "packagesPath": "C:\\Users\\Nasiu\\.nuget\\packages\\",
+        "outputPath": "D:\\Programación\\Proyectos\\GitHub\\EntityFrameworkTesting\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\popes\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Nasiu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net5.0-windows7.0"
+          "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net5.0-windows7.0": {
-            "targetAlias": "net5.0-windows",
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -42,8 +41,8 @@
         }
       },
       "frameworks": {
-        "net5.0-windows7.0": {
-          "targetAlias": "net5.0-windows",
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -72,7 +71,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
