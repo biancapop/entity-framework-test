@@ -3,7 +3,8 @@ using System.Linq;
 
 namespace EntityFrameworkTesting
 {
-    public interface ITaskRepository{
+    public interface ITaskRepository
+    {
         void Create(Task task);
 
         void DeleteTask(Task task);
@@ -14,7 +15,7 @@ namespace EntityFrameworkTesting
     }
 
 
-    class TaskRepository:ITaskRepository
+    class TaskRepository : ITaskRepository
     {
         private DatabaseContext _databaseContext;
 
@@ -39,16 +40,13 @@ namespace EntityFrameworkTesting
 
         public List<Task> Mostrar()
         {
-           return _databaseContext.Tasks.ToList();
+            return _databaseContext.Tasks.ToList();
         }
 
         public void SearchTask(Task task)
         {
-
             _databaseContext.Tasks.FirstOrDefault(t => t.Name == task.Name);
-           
-       
         }
-        
+
     }
 }
