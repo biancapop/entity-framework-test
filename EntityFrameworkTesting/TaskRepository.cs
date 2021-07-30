@@ -1,16 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Windows;
 
 namespace EntityFrameworkTesting
 {
     public interface ITaskRepository
     {
         void Create(Task task);
+        void Createcategory(Task task);
 
-        void DeleteTask(Task task);
+        void Delete(Task task);
 
-        void SearchTask(Task task);
+        public Task SearchTask(int id);
         List<Task> Mostrar();
+        public void Update(Task task);
+        
 
     }
 
@@ -32,21 +37,31 @@ namespace EntityFrameworkTesting
                 _databaseContext.SaveChanges();
             }
         }
-        public void DeleteTask(Task task)
+        public void Createcategory(Task task)
         {
-            _databaseContext.Tasks.Remove(task);
             _databaseContext.SaveChanges();
         }
-
         public List<Task> Mostrar()
         {
             return _databaseContext.Tasks.ToList();
         }
-
-        public void SearchTask(Task task)
+        public Task SearchTask(int id)
         {
-            _databaseContext.Tasks.FirstOrDefault(t => t.Name == task.Name);
-        }
 
+           return (from a in _databaseContext.Tasks where a.Id == id select a).FirstOrDefault();
+           //return _databaseContext.Tasks.FirstOrDefault(t => t.Name == name);
+        }
+        public void Delete(Task task)
+        {
+
+            _databaseContext.Remove(task);
+            _databaseContext.SaveChanges();
+            
+        }
+        public void Update (Task task)
+        {
+            _databaseContext.Tasks.Update(task);
+            _databaseContext.SaveChanges();
+        }
     }
 }

@@ -5,21 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EntityFrameworkTesting"
         mc:Ignorable="d"
-        Title="MainWindow" Height="504" Width="687">
+        Title="MainWindow" Height="504" Width="580">
     <Grid Margin="0,0,0,-6">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="400*"/>
-            <ColumnDefinition Width="24*"/>
-            <ColumnDefinition Width="26*"/>
-            <ColumnDefinition Width="237*"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button Name="Send" Content="Añadir" HorizontalAlignment="Left" Margin="9,105,0,0" VerticalAlignment="Top" Height="42" Width="104" Click="Send_Click" Grid.Column="3"/>
-        <ListBox Name="List1" Margin="36,31,167,59"/>
-        <ListBox Name="List2" Margin="245,31,8,59" Grid.ColumnSpan="3"/>
-        <Button x:Name="Delete" Content="Borrar" HorizontalAlignment="Left" Margin="117,152,0,0" VerticalAlignment="Top" Height="42" Width="104"  Grid.Column="3" Click="Delete_Click"/>
-        <Button x:Name="Mostrar" Content="Mostrar Todo" HorizontalAlignment="Left" Margin="9,152,0,0" VerticalAlignment="Top" Height="42" Width="104"  Grid.Column="3"/>
-        <Button x:Name="Search" Content="Buscar" HorizontalAlignment="Left" Margin="117,105,0,0" VerticalAlignment="Top" Height="42" Width="104"  Grid.Column="3"/>
-        <TextBox x:Name="miTextBox" HorizontalAlignment="Left" Margin="9,63,0,0" Text="Escribe aquí..." TextWrapping="Wrap" VerticalAlignment="Top" Width="212" Height="37" RenderTransformOrigin="0.615,1.001" Grid.Column="3"/>
+        <ListBox Name="List1" Margin="36,31,290,59" ItemsSource="{Binding StringFormat=strListTask}" Cursor="Hand" MouseDoubleClick="List1_MouseDoubleClick_1" Background="White"/>
+
+        <Button Name="Send" Content="Añadir tarea" HorizontalAlignment="Left" Margin="306,102,0,0" VerticalAlignment="Top" Height="42" Width="104" Click="Send_Click" Cursor="Hand"/>
+        <Button x:Name="Delete" Content="Borrar" HorizontalAlignment="Left" Margin="415,102,0,0" VerticalAlignment="Top" Height="42" Width="104" Click="Delete_Click" Cursor="Hand"/>
+        <Button x:Name="Mostrar" Content="Añadir Categoría" HorizontalAlignment="Left" Margin="306,149,0,0" VerticalAlignment="Top" Height="42" Width="104" Click="AddCategory_Click" Cursor="Hand"/>
+        <Button   x:Name="Search" Content="Buscar" HorizontalAlignment="Left" Margin="471,31,0,0" VerticalAlignment="Top" Height="37" Width="61" BorderThickness="1,1,1,1"  Cursor="Hand" Click="Search_Click"/>
+
+        <TextBox x:Name="SearchBox" HorizontalAlignment="Left" Margin="306,31,0,0" Text="Escribe aquí..." TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Height="37" RenderTransformOrigin="0.615,1.001"/>
 
     </Grid>
 </Window>

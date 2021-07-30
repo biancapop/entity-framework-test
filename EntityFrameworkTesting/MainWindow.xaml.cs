@@ -2,6 +2,8 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Linq;
+using System.Windows.Documents;
 
 namespace EntityFrameworkTesting
 {
@@ -10,23 +12,62 @@ namespace EntityFrameworkTesting
     /// </summary>
     public partial class MainWindow : Window
     {
+        private List<Task> list = new List<Task>();
+        public List<Task> Lista
+        {
+            get { return list; }
+            set { list = value; }
+        }
+        private List<Category> listCombo = new List<Category>();
+        public List<Category> _listCombo 
+        {
+            get { return listCombo; }
+            set { listCombo = value; }
+        }
         UnitOfWork unitOfWork;
-        List<Task> list;
+        Task task;
         public MainWindow()
         {
             InitializeComponent();
             unitOfWork = new UnitOfWork();
             list = unitOfWork.Tasks.Mostrar();
+            UpdateList();
+            
+        }
+        private void Send_Click(object sender, RoutedEventArgs e)
+        {
+            Window1 window1 = new Window1(list,listCombo);
+            window1.Owner = this;
+            window1.ShowDialog();
+            UpdateList();
+        }
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            Task task = list.FirstOrDefault(t => t.Name == List1.SelectedItem.ToString());
+            unitOfWork.Tasks.Delete(task);
+            Lista.Remove(task);
+            UpdateList();
+        }
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            DatabaseContext databaseContext = new DatabaseContext();
+            List<string> strListSearch = new List<string>();
 
-
-            //Aqui tienes un ejemplo aunque es un poco trampa
-            //primero en la línea 19 saco las tareas de la base de datos - si no hay ninguna es posible que te de error
-            // porque el método del repo devuelva null - se debería comprobar en ese método si no hay tareas y que devuelva una
-            //lista vacía.
-            //Luego para hacer el binding lo he hecho pasando los datos a una lista de strings que solo lleva el nombre
-            // de la tarea. Se puede hacer con la lista de objetos - en este link te dice cómo lo hacen
-            // habría que hacer una plantilla  -- https://stackoverflow.com/questions/449410/programmatically-binding-list-to-listbox
-            // y tmb se puede hacer de esta otra manera:  https://stackoverflow.com/questions/9368506/wpf-listbox-binding
+            foreach (Task i in databaseContext.Tasks)
+            {
+                if (i.Name == SearchBox.Text)
+                {
+                    strListSearch.Add(i.Name);
+                }
+            }
+            BindingOperations.SetBinding(List1, ItemsControl.ItemsSourceProperty, new Binding
+            {
+                Source = strListSearch
+            });
+            
+        }
+        public void UpdateList()
+        {
             List<string> strListTask = new List<string>();
             list.ForEach(t => strListTask.Add(t.Name));
 
@@ -34,47 +75,37 @@ namespace EntityFrameworkTesting
             {
                 Source = strListTask
             });
-
-
-            /*
-            Task task = new Task();
-            task.Name = "Tarea1";
-
-            Category homeCat = new Category("Hogar");
-            Task task = new Task("Barrer","Barrer la cocina y el pasillo", homeCat);
-
-            TaskRepository taskRepo = new TaskRepository(databaseContext);
-            taskRepo.Create(task);
-            */
-
+            
         }
-
-        private void Send_Click(object sender, RoutedEventArgs e)
+        private void AddCategory_Click(object sender, RoutedEventArgs e)
         {
-            Task task = new Task();
-            task.Name = miTextBox.Text;
-            unitOfWork.Tasks.Create(task);
+            Window1 window1 = new Window1(list, listCombo);
+            CategoryAdd categoryAdd = new CategoryAdd(listCombo);
+            categoryAdd.Owner = this;
+            categoryAdd.ShowDialog();
         }
-
-        private void Delete_Click(object sender, RoutedEventArgs e)
+        private void List1_MouseDoubleClick_1(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            Task task = new Task();
-            task.Name = (string)List1.SelectedItem;
-            DatabaseContext databaseContext = new DatabaseContext();
+            Window2 window2 = new Window2();
+            DatabaseContext database = new DatabaseContext();
 
-            TaskRepository taskRepo = new TaskRepository(databaseContext);
-            taskRepo.DeleteTask(task);
+            List<int> idListTask = new List<int>();
+            list.ForEach(t => idListTask.Add(t.Id));
 
-            /*
-            UnitOfWork unitOfWork = new UnitOfWork();
-            unitOfWork.Categories.Create(homeCat);
-            unitOfWork.Tasks.Create(task);*/
+            int id = (from i in database.Tasks where List1.SelectedIndex == list.IndexOf(task) select i.Id).FirstOrDefault();
 
-        }
 
-        private void Search_Click(object sender, RoutedEventArgs e)
-        {
+            //int id;
+            //id = (from i in database.Tasks where i.Name == List1.SelectedItem.ToString() select i).FirstOrDefault().Id;
+            // string name;
+            // name = List1.SelectedItem.ToString();
 
+                //window2.IdBlock.Content = i.Id;
+                //window2.IdBlock.Content = unitOfWork.Tasks.SearchTask(id).Id;
+                window2.NameBlock.Content = unitOfWork.Tasks.SearchTask(id).Name;
+                window2.ContentBlock.Content = unitOfWork.Tasks.SearchTask(id).Content;
+                window2.CategoryBlock.Content = (from c in database.Tasks where c.Name == List1.SelectedItem.ToString() join cid in database.Categories on c.CategoryId equals cid.Id select cid.Name.ToString());
+                window2.Show();
         }
     }
 }

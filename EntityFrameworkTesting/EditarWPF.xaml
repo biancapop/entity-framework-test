@@ -1,0 +1,30 @@
+﻿<Window x:Class="EntityFrameworkTesting.EditarWPF"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EntityFrameworkTesting"
+        mc:Ignorable="d"
+        Title="Editar" Height="341" Width="337">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="294"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock x:Name="IdBlock" HorizontalAlignment="Left" Margin="119,19,0,0" VerticalAlignment="Top" Width="168"><Run Text="1"/><Run Language="es-es" Text="5"/></TextBlock>
+        <TextBox x:Name="NameBlock" HorizontalAlignment="Left" Margin="119,85,0,0" VerticalAlignment="Top" Width="168" Text="Texto" BorderThickness="1" BorderBrush="Black" FontSize="13" Height="25"/>
+        <Label FontWeight="Bold" Content="Id:" HorizontalAlignment="Left" Margin="73,14,0,0" VerticalAlignment="Top" Width="35"/>
+        <Label FontWeight="Bold" Content="Nombre:" HorizontalAlignment="Left" Margin="36,85,0,0" VerticalAlignment="Top" Width="68"/>
+        <TextBox x:Name="ContentBlock" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="78" Width="258" Text="Text Block" BorderThickness="1" BorderBrush="Black" Margin="29,160,0,0"/>
+
+        <Label  FontWeight="Bold" Content="Descripción:" HorizontalAlignment="Left" Margin="29,129,0,0" VerticalAlignment="Top" Width="89"/>
+        <Button x:Name="Save"  Content="Guardar" HorizontalAlignment="Left" Height="37" Margin="197,253,0,0" VerticalAlignment="Top" Width="90" Click="Save_Click"  />
+        <Label FontWeight="Bold" Content="Categoría:" HorizontalAlignment="Left" Margin="29,49,0,0" VerticalAlignment="Top" Width="75"/>
+
+
+
+        <Button x:Name="Cancel"  Content="Cancelar" HorizontalAlignment="Left" Margin="29,253,0,0" VerticalAlignment="Top" Height="36" Width="89" Click="Cancel_Click" />
+        <ComboBox x:Name="CategoryCombo"  HorizontalAlignment="Left" Margin="119,51,0,0" VerticalAlignment="Top" Width="168"/>
+
+    </Grid>
+</Window>
